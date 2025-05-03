@@ -1,10 +1,12 @@
-import './App.css';
+import "./App.css";
+import Body from "./components/Body";
+import Header from "./components/Header";
 
 export function App() {
   return (
     <>
-      <h1>Parcel React App</h1>
-      <p>Edit <code>src/App.tsx</code> to get started!</p>
+      <Header />
+      <Body />
     </>
   );
 }
