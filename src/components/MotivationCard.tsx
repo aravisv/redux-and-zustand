@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { motivationQuotes } from "../constants";
+import { useSelector } from "react-redux";
+import { StoreStateType } from "../redux/reducer";
 
 const MotivationCard = () => {
+  const userName = useSelector((state: StoreStateType) => state?.userName);
   const [randomNumber, setRandomNumber] = useState(0);
   function getRandomInt(min: number, max: number) {
     const minCeiled = Math.ceil(min);
@@ -12,7 +15,7 @@ const MotivationCard = () => {
   const { quote, author } = motivationQuotes[randomNumber];
   return (
     <div className="motivation-card">
-      <div>Hey UserName !</div>
+      <div>Hey {userName} !</div>
       <div className="quote">{quote}</div>
       <div className="author">- {author}</div>
       <button

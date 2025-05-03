@@ -1,30 +1,31 @@
+import { useRef } from "react";
 import MotivationCard from "./MotivationCard";
+import { useDispatch } from "react-redux";
+import { setUserName } from "../redux/actions";
 
 const Body = () => {
+  const dispatch = useDispatch();
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <div className="body">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const formData = new FormData(e.currentTarget);
-          const enteredUserName = formData.get("userName");
+          const enteredUserName = inputRef?.current?.value;
           console.log("Entered userName username:", enteredUserName);
+          dispatch(setUserName(enteredUserName || ""));
 
-          const userNameInputElement = document.getElementById(
-            "usernameInput"
-          ) as HTMLInputElement;
-
-          if (userNameInputElement) {
+          if (inputRef?.current) {
             if (!enteredUserName) {
-              userNameInputElement.setCustomValidity("Username is required!");
-              //userNameInputElement.reportValidity(); // Triggers the browser's error display
+              inputRef.current.setCustomValidity("Username is required!");
+              inputRef.current.reportValidity(); //
               return; // stop further execution
             } else {
-              userNameInputElement.setCustomValidity(""); // clear previous errors
+              inputRef.current.setCustomValidity(""); // clear previous errors
             }
-
             // If valid, clear input
-            userNameInputElement.value = "";
+            inputRef.current.value = "";
           }
         }}
       >
@@ -33,7 +34,12 @@ const Body = () => {
           id="usernameInput"
           name="userName"
           className="username-input"
-          //required
+          ref={inputRef}
+          onInput={() => {
+            if (inputRef.current) {
+              inputRef.current.setCustomValidity(""); // Clear error as user types
+            }
+          }}
         ></input>
         <button type="submit">Update</button>
       </form>
