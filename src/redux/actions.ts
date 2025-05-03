@@ -3,9 +3,9 @@ export type ActionType = {
   payload: any;
 };
 
-export const setUserName = (userName: string): ActionType => {
-  return {
-    type: "SET_USERNAME",
-    payload: userName,
-  };
-};
+// export const setUserName = (userName: string): ActionType => {
+//   return {
+//     type: "SET_USERNAME",
+//     payload: userName,
+//   };
+// };

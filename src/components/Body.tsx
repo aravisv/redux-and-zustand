@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import MotivationCard from "./MotivationCard";
 import { useDispatch } from "react-redux";
-import { setUserName } from "../redux/actions";
+//import { setUserName } from "../redux/actions";
+import { setUserName } from "../redux/reducer";
 
 const Body = () => {
   const dispatch = useDispatch();
