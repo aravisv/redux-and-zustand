@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import MotivationCard from "./MotivationCard";
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 //import { setUserName } from "../redux/actions";
 import { setUserName } from "../redux/reducer";
+import { useStore } from "../zustand/store";
 
 const Body = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
+  const setUserName = useStore((state) => state.setUserName);
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -15,7 +17,8 @@ const Body = () => {
           e.preventDefault();
           const enteredUserName = inputRef?.current?.value;
           console.log("Entered userName username:", enteredUserName);
-          dispatch(setUserName(enteredUserName || ""));
+          //dispatch(setUserName(enteredUserName || ""));
+          setUserName(enteredUserName || "");
 
           if (inputRef?.current) {
             if (!enteredUserName) {

@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { motivationQuotes } from "../constants";
-import { useSelector } from "react-redux";
-import { StoreStateType } from "../redux/reducer";
+// import { useSelector } from "react-redux";
+// import { StoreStateType } from "../redux/reducer";
+import { useStore } from "../zustand/store";
 
 const MotivationCard = () => {
-  const userName = useSelector((state: StoreStateType) => state?.userName);
+  //const userName = useSelector((state: StoreStateType) => state?.userName);
+  const userName = useStore((state) => state.userName);
+
   const [randomNumber, setRandomNumber] = useState(0);
   function getRandomInt(min: number, max: number) {
     const minCeiled = Math.ceil(min);
