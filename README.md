@@ -8,3 +8,4 @@
 7. using zustand instead of redux
 8. added devtools from zustand middleware to use the redux devtools
 9. using persist from zustand middleware to persist data during page refresh
+10. using session storage via handling the JSON parsing manually and using the createJSONStorage method
