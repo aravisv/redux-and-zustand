@@ -6,3 +6,5 @@
 6. using reduxjs/toolkit - createSlice instead of the legacy way to create reducer
    and configureStore to create store
 7. using zustand instead of redux
+8. added devtools from zustand middleware to use the redux devtools
+9. using persist from zustand middleware to persist data during page refresh
